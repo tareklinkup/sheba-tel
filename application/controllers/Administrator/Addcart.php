@@ -10,7 +10,7 @@ class Addcart extends CI_Controller {
         $this->load->library('cart');
         $this->load->library('Excel');
         $this->load->model('Model_table', "mt", TRUE);
-        $this->load->helper('form');
+        $this->load->helper('form'); 
 	}
 
 	public function index(){	
