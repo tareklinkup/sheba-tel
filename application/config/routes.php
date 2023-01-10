@@ -284,6 +284,12 @@ $route['returnList'] = 'Administrator/Sales/return_list';
 $route['salesReturnRecord'] = 'Administrator/Sales/sales_return_record';
 $route['salesreturnlist'] = 'Administrator/Reports/salesreturnlist';
 
+// Installment Paper
+$route['installment-paper'] = 'Administrator/Sales/installmentPaper';
+
+//Guarantor Paper
+$route['guarantor-paper'] = 'Administrator/Sales/guarantorPaper';
+
 $route['profitLoss'] = 'Administrator/Sales/profitLoss';
 $route['profitLossSearch'] = 'Administrator/Sales/profitLossSearch';
 $route['get_profit_loss'] = 'Administrator/Sales/getProfitLoss';

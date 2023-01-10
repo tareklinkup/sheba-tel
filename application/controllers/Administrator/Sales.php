@@ -197,6 +197,22 @@ class Sales extends CI_Controller {
         $this->load->view('Administrator/index', $data);
     }
 
+    // installment paper
+    public function installmentPaper() {
+        $data['title'] = "Sale Installment Paper";
+        $data['content'] = $this->load->view('Administrator/sales/installment_paper', $data, TRUE);
+        $this->load->view('Administrator/index', $data);
+    }
+
+    //Guarantor Paper 
+
+    public function guarantorPaper() {
+        $data['title'] = "Sale Guarantor Paper";
+        $data['content'] = $this->load->view('Administrator/sales/guarantor_paper', $data, TRUE);
+        $this->load->view('Administrator/index', $data);
+    }
+
+
     public function getSaleDetails(){
         $data = json_decode($this->input->raw_input_stream);
 
@@ -1268,40 +1284,42 @@ class Sales extends CI_Controller {
     
      function select_customerName()  { 
        ?>
-       <div class="form-group">
-        <label class="col-sm-2 control-label no-padding-right" for="customerID"> Select Customer </label>
-        <div class="col-sm-3">
-            <select name="" id="customerID" data-placeholder="Choose a Customer..." class="chosen-select" >
-                <option value="All">All</option>
-                <?php 
+<div class="form-group">
+    <label class="col-sm-2 control-label no-padding-right" for="customerID"> Select Customer </label>
+    <div class="col-sm-3">
+        <select name="" id="customerID" data-placeholder="Choose a Customer..." class="chosen-select">
+            <option value="All">All</option>
+            <?php 
                 $sql = $this->db->query("SELECT * FROM tbl_customer where Customer_brunchid = '".$this->sbrunch."' AND Customer_Type = 'Local' order by Customer_Name asc");
                 $row = $sql->result();
                 foreach($row as $row){ ?>
 
-                <option value="<?php echo $row->Customer_SlNo; ?>"><?php echo $row->Customer_Name; ?> (<?php echo $row->Customer_Code; ?>)</option>
-                <?php } ?>
-            </select>
-        </div>
+            <option value="<?php echo $row->Customer_SlNo; ?>"><?php echo $row->Customer_Name; ?>
+                (<?php echo $row->Customer_Code; ?>)</option>
+            <?php } ?>
+        </select>
     </div>
-       <?php
+</div>
+<?php
     }
     function select_InvCustomerName()  {
         ?>
-        <div class="form-group">
-            <div class="col-sm-3">
-                <select id="Salestype" class="chosen-select" name="Salestype">
-                    <option value="All">All</option>
-                    <?php
+<div class="form-group">
+    <div class="col-sm-3">
+        <select id="Salestype" class="chosen-select" name="Salestype">
+            <option value="All">All</option>
+            <?php
                     $sql = $this->db->query("SELECT * FROM tbl_customer where Customer_brunchid = '".$this->sbrunch."' AND Customer_Type = 'Local' order by Customer_Name asc");
                     $row = $sql->result();
                     foreach($row as $row){ ?>
 
-                        <option value="<?php echo $row->Customer_SlNo; ?>"><?php echo $row->Customer_Name; ?> (<?php echo $row->Customer_Code; ?>)</option>
-                    <?php } ?>
-                </select>
-            </div>
-        </div>
-        <?php
+            <option value="<?php echo $row->Customer_SlNo; ?>"><?php echo $row->Customer_Name; ?>
+                (<?php echo $row->Customer_Code; ?>)</option>
+            <?php } ?>
+        </select>
+    </div>
+</div>
+<?php
     }
     function sales_customerName()  {
         $id = $this->input->post('customerID');
